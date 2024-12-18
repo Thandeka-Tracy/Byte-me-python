@@ -1,34 +1,72 @@
 # Placeholder functions for Python basics, to be implemented later
+import math
 
 def add_numbers(a, b):
-    pass
+    return a + b
 
 def find_maximum(a, b, c):
-    pass
+    return max(a, b, c)
 
 def is_palindrome(string):
-    pass
+    try:
+        return string == string[::-1]
+    except:
+        raise(TypeError)
 
 def count_word_occurrences(text, word):
-    pass
+    try:
+        split_string = text.lower().split()
+        return split_string.count(word)
+    except:
+        raise(TypeError)
+
 
 def read_file_lines(filepath):
-    pass
+    with open(filepath) as content:
+        return content.readlines()
 
 def factorial(n):
     pass
 
 def is_prime(n):
-    pass
+    if n < 0:
+        raise(ValueError)
+    elif isinstance(n, str):
+        raise(TypeError)
+    elif n == 0 or n == 1:
+        return False
+    else:
+        for num in range(2, n):
+            if n & num == 0:
+                return False
+        return True
 
 def sort_numbers(numbers):
-    pass
+    if len(numbers) == 0:
+        return numbers
+    elif isinstance(numbers[0], str):
+        raise(TypeError)
+    else:
+        return sorted(numbers)
 
 def factorial(n):
-    pass
+    if n < 0:
+        raise(ValueError)
+    elif isinstance(n, str):
+        raise(TypeError)
+    elif n == 0 or n == 1:
+        return 1
+    else:
+        product = 1
+        for num in range(1, n+1):
+            product *= num
+        return product
 
 def fibonacci(n):
-    pass
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fibonacci(n-2) + fibonacci(n-1)
 
 def tower_of_hanoi(n, source, auxiliary, target):
     
@@ -52,7 +90,11 @@ def tower_of_hanoi(n, source, auxiliary, target):
 
 class Person:
     def __init__(self, name, age):
-        pass
+        self.name = name
+        self.age = age
+
+        if isinstance(self.name, int) or isinstance(self.age, str):
+            raise(TypeError)
 
 
 if __name__ == "__main__":
